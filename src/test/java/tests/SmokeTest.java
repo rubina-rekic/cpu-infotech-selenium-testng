@@ -47,6 +47,14 @@ public class SmokeTest {
     }
 
     @Test(groups = "smoke")
+    public void searchResultsShowProducts() {
+        CategoryPage searchResultsPage = homePage.searchFor("laptop");
+
+        Assert.assertTrue(searchResultsPage.hasProducts(),
+                "Search results page should display at least one product");
+    }
+
+    @Test(groups = "smoke")
     public void productPageShowsPrice() {
         CategoryPage categoryPage = homePage.openCoffeeAppliancesCategory();
         ProductPage productPage = categoryPage.openFirstProduct();

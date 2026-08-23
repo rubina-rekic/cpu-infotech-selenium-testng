@@ -28,9 +28,11 @@ public class HomePage extends BasePage {
         return isDisplayed(mainMenu);
     }
 
-    public void searchFor(String term) {
+    public CategoryPage searchFor(String term) {
         type(searchInput, term);
         waitForVisible(searchInput).sendKeys(Keys.ENTER);
+
+        return new CategoryPage(driver);
     }
 
     public CategoryPage openCoffeeAppliancesCategory() {
