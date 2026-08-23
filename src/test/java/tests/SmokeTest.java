@@ -6,9 +6,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import pages.CartPage;
+import pages.CategoryPage;
 import pages.HomePage;
+import pages.ProductPage;
 import utils.DriverFactory;
-
 
 public class SmokeTest {
 
@@ -34,6 +36,31 @@ public class SmokeTest {
 
         Assert.assertTrue(driver.getCurrentUrl().contains("s=iphone"),
                 "URL should contain the search query parameter after searching");
+    }
+
+    @Test(groups = "smoke")
+    public void categoryPageShowsProducts() {
+        CategoryPage categoryPage = homePage.openCoffeeAppliancesCategory();
+
+        Assert.assertTrue(categoryPage.hasProducts(),
+                "Category page should display at least one product");
+    }
+
+    @Test(groups = "smoke")
+    public void productPageShowsPrice() {
+        CategoryPage categoryPage = homePage.openCoffeeAppliancesCategory();
+        ProductPage productPage = categoryPage.openFirstProduct();
+
+        Assert.assertTrue(productPage.isPriceDisplayed(),
+                "Product page should display a price");
+    }
+
+    @Test(groups = "smoke")
+    public void cartPageOpensSuccessfully() {
+        CartPage cartPage = homePage.openCart();
+
+        Assert.assertTrue(cartPage.isLoaded(),
+                "Cart page should load successfully when accessed from the header");
     }
 
     @AfterMethod

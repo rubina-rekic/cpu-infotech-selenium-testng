@@ -1,18 +1,26 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public abstract class BasePage {
 
     protected final WebDriver driver;
     protected final WebDriverWait wait;
+    private final By cartIcon = By.cssSelector("span.cart-icon");
+    private final By viewCartLink = By.cssSelector("#mini-cart a[href*='/cart/']");
+
+    public CartPage openCart() {
+        click(cartIcon);
+        click(viewCartLink);
+        return new CartPage(driver);
+    }
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
