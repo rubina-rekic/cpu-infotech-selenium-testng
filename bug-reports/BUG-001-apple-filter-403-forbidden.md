@@ -52,8 +52,9 @@ directly by nginx, with no site navigation or content rendered at all.
 
 ## Evidence
 Screenshots showing identical 403 responses for:
-- `apple-filter-403-forbidden.png` (`?filter_proizvodac=apple`)
-- `xiaomi-filter-403-forbidden.png` (`?filter_proizvodac=xiaomi`)
+- ![Apple 403 Error](images/apple-filter-403-forbidden.png) (?filter_proizvodac=apple)
+
+- ![Xiaomi 403 Error](images/xiaomi-filter-403-forbidden.png) (?filter_proizvodac=xiaomi)
 
 (Samsung and the nonsense-value test produced the same 403 page; screenshots
 of those weren't separately saved, but are trivially reproducible via the
