@@ -9,7 +9,9 @@ import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.CategoryPage;
 import pages.HomePage;
+import pages.LoginPage;
 import pages.ProductPage;
+import utils.ConfigReader;
 import utils.DriverFactory;
 
 public class SmokeTest {
@@ -70,6 +72,17 @@ public class SmokeTest {
         Assert.assertTrue(cartPage.isLoaded(),
                 "Cart page should load successfully when accessed from the header");
     }
+
+    @Test(groups = "smoke")
+public void userCanLogInSuccessfully() {
+    LoginPage loginPage = new LoginPage(driver);
+
+    loginPage.openLoginForm();
+    loginPage.loginAs(ConfigReader.getLogin(), ConfigReader.getPassword());
+
+    Assert.assertTrue(loginPage.isLoggedIn(),
+            "Logout link should be visible after a successful login, confirming the user is logged in");
+}
 
     @AfterMethod
     public void tearDown() {

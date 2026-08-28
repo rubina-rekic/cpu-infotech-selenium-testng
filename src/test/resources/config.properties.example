@@ -1,0 +1,4 @@
+# config.properties is gitignored and will never be committed
+
+test.login=your-username-or-email-here
+test.password=your-password-here
