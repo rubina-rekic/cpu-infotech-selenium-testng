@@ -15,6 +15,12 @@ public abstract class BasePage {
     protected final WebDriverWait wait;
     private final By cartIcon = By.cssSelector("span.cart-icon");
     private final By viewCartLink = By.cssSelector("#mini-cart a[href*='/cart/']");
+    private final By cartItemCountBadge = By.cssSelector("span.cart-items");
+
+    public int getHeaderCartItemCount() {
+        String countText = getText(cartItemCountBadge);
+        return Integer.parseInt(countText.trim());
+    }
 
     public CartPage openCart() {
         click(cartIcon);
