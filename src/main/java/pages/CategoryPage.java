@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class CategoryPage extends BasePage {
 
@@ -11,6 +12,19 @@ public class CategoryPage extends BasePage {
     private final By firstProductTitleLink = By.cssSelector(".product h3.post-title a");
 
     private final By noResultsMessage = By.cssSelector("p.woocommerce-info");
+
+    private final By sortDropdown = By.id("woocommerce-orderby-1");
+
+    private final By notFoundIndicator = By.xpath("//*[contains(text(), '403 Forbidden')]");
+
+    public boolean showsForbiddenError() {
+        return isDisplayed(notFoundIndicator);
+    }
+
+    public void sortByPriceLowToHigh() {
+        Select select = new Select(waitForVisible(sortDropdown));
+        select.selectByValue("price");
+    }
 
     public boolean hasNoResultsMessage() {
         return isDisplayed(noResultsMessage);
