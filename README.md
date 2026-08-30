@@ -1,4 +1,4 @@
-# CPU Infotech — Selenium + TestNG Test Automation Framework
+# CPU Infotech - Selenium + TestNG Test Automation Framework
 
 A Selenium WebDriver + TestNG test automation framework built against
 [cpuinfotech.ba](https://cpuinfotech.ba), a live WooCommerce e-commerce
