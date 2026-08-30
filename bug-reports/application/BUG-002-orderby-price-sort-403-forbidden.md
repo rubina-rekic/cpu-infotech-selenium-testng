@@ -61,7 +61,8 @@ error page).
 
 ## Evidence
 Screenshot showing the Chrome DevTools Console with the failed request:
-`orderby-403-console-error.png`
+
+![Console showing 403 error on orderby request](../images/orderby-403-console-error.png)
 
 ## Investigation
 1. Initially, this appeared to be a performance/slow-loading issue (the
