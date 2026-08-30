@@ -46,6 +46,23 @@ public class CartRegressionTest {
                 "Cart should be empty after removing the only item in it");
     }
 
+    @Test(groups = "regression")
+    public void updatingQuantity_updatesSubtotal() {
+        homePage.searchFor("hama");
+        CategoryPage searchResults = new CategoryPage(driver);
+        ProductPage productPage = searchResults.openFirstProduct();
+        productPage.addToCart();
+
+        CartPage cartPage = homePage.openCart();
+        String subtotalBefore = cartPage.getProductSubtotal();
+
+        cartPage.increaseQuantityBy(2); // Increase quantity from 1 to 3
+        String subtotalAfter = cartPage.getProductSubtotal();
+
+        Assert.assertNotEquals(subtotalAfter, subtotalBefore,
+                "Product subtotal should change after updating quantity from 1 to 3");
+    }
+
     @AfterMethod
     public void tearDown() {
         if (driver != null) {
@@ -56,7 +73,7 @@ public class CartRegressionTest {
                     cartPage.removeFirstItem();
                 }
             } catch (Exception e) {
-                
+
             } finally {
                 driver.quit();
             }
