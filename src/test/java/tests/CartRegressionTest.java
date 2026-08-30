@@ -20,7 +20,7 @@ public class CartRegressionTest {
     private WebDriver driver;
     private HomePage homePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = DriverFactory.createDriver();
         homePage = new HomePage(driver);
@@ -63,7 +63,7 @@ public class CartRegressionTest {
                 "Product subtotal should change after updating quantity from 1 to 3");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             try {

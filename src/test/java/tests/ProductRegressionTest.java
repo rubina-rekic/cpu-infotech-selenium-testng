@@ -13,7 +13,7 @@ public class ProductRegressionTest {
     private WebDriver driver;
     private HomePage homePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = utils.DriverFactory.createDriver();
         homePage = new HomePage(driver);
@@ -40,7 +40,7 @@ public class ProductRegressionTest {
                 "Product title on the product page should match the title shown in the category listing");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             driver.quit();

@@ -19,7 +19,7 @@ public class AccountRegressionTest {
     private WebDriver driver;
     private HomePage homePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = DriverFactory.createDriver();
         homePage = new HomePage(driver);
@@ -41,7 +41,7 @@ public class AccountRegressionTest {
                 "Log In link should reappear after logging out, confirming the session ended");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             driver.quit();

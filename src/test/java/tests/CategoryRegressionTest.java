@@ -18,7 +18,7 @@ public class CategoryRegressionTest {
     private WebDriver driver;
     private HomePage homePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = DriverFactory.createDriver();
         homePage = new HomePage(driver);
@@ -38,7 +38,7 @@ public class CategoryRegressionTest {
 
 
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             driver.quit();
