@@ -30,7 +30,6 @@ public void increaseQuantityBy(int clicks) {
     WebElement quantityField = wait.until(ExpectedConditions.elementToBeClickable(quantityInput));
 
     JavascriptExecutor js = (JavascriptExecutor) driver;
-    // Postavljamo vrijednost i okidamo jQuery + Native change/input događaje
     js.executeScript(
         "arguments[0].value = arguments[1];" +
         "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));" +
@@ -39,11 +38,9 @@ public void increaseQuantityBy(int clicks) {
         quantityField, String.valueOf(expectedFinalValue)
     );
 
-    // Sačekaj da dugme "Ažuriraj korpu" postane omogućeno (klikabilno)
     WebElement updateBtn = wait.until(ExpectedConditions.elementToBeClickable(updateCartButton));
     updateBtn.click();
 
-    // Ključno: Sačekaj da se stranica/korpa ponovo učita (AJAX ili full reload)
     wait.until(ExpectedConditions.stalenessOf(quantityField));
 }
 

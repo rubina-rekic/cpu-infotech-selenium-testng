@@ -13,13 +13,22 @@ public class LoginPage extends BasePage {
     private final By usernameField = By.id("username");
     private final By passwordField = By.id("password");
     private final By loginSubmitButton = By.cssSelector("button[name='login']");
-    private final By logoutLink= By.cssSelector("a[href*='customer-logout']");
+    private final By logoutLink = By.cssSelector("a[href*='customer-logout']");
+    private final By logoutConfirmLink = By.linkText("Potvrdite i odjavite se");
+
+    public void logout() {
+        click(logoutLink);
+        click(logoutConfirmLink);
+    }
+    public boolean isLoggedOut() {
+        return isDisplayed(logInTriggerLink);
+    }
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isLoggedIn(){
+    public boolean isLoggedIn() {
         return isDisplayed(logoutLink);
     }
 
