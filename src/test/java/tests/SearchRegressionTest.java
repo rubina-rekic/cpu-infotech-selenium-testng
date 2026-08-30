@@ -34,6 +34,14 @@ public class SearchRegressionTest {
                 "A clear 'no products found' message should be shown for a search term with no matches");
     }
 
+    @Test(groups = "regression") 
+    public void partialSearchTerm_returnsMatchingProducts(){
+        CategoryPage resultsPage=homePage.searchFor("kafe");
+        Assert.assertTrue(resultsPage.getProductCount()!=0,
+                "Searching for a partial term should return matching products");
+
+    }
+
     @AfterMethod
     public void tearDown() {
         if (driver != null) {
