@@ -36,6 +36,8 @@ public class CategoryRegressionTest {
                 "Category page should still show products after sorting by price");
     }
 
+
+
     @AfterMethod
     public void tearDown() {
         if (driver != null) {

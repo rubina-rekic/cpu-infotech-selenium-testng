@@ -46,4 +46,8 @@ public class CategoryPage extends BasePage {
         click(firstProductTitleLink);
         return new ProductPage(driver);
     }
+
+    public String getFirstProductName() {
+    return getText(firstProductTitleLink);
+}
 }
