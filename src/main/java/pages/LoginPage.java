@@ -15,6 +15,11 @@ public class LoginPage extends BasePage {
     private final By loginSubmitButton = By.cssSelector("button[name='login']");
     private final By logoutLink = By.cssSelector("a[href*='customer-logout']");
     private final By logoutConfirmLink = By.linkText("Potvrdite i odjavite se");
+    private final By loginErrorMessage = By.cssSelector("p.status");
+
+public boolean hasLoginError() {
+    return isDisplayed(loginErrorMessage);
+}
 
     public void logout() {
         click(logoutLink);

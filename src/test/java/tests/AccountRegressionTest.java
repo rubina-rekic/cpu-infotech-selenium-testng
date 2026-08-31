@@ -41,6 +41,17 @@ public class AccountRegressionTest {
                 "Log In link should reappear after logging out, confirming the session ended");
     }
 
+    @Test(groups = "regression")
+    public void loginWithWrongPassword_showsErrorMessage() {
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.openLoginForm();
+        loginPage.loginAs(ConfigReader.getLogin(), "definitelyWrongPassword123");
+
+        Assert.assertTrue(loginPage.hasLoginError(),
+                "A clear error message should be shown when login credentials are incorrect");
+    }
+
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
